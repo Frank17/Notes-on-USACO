@@ -19,6 +19,7 @@ for si, ti, bi in cows:
 	free_bk_n = min(avai_bk_n, bi)
 	avai_bk_n -= free_bk_n
 	rqed_bk_n += (bi - free_bk_n)
-	insort(is_milking, (ti, bi), key=lambda tj: -tj[0])
+	insort(is_milking, (ti, bi), key=lambda c: -c[0])
 
+	
 print(rqed_bk_n)
