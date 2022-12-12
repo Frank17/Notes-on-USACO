@@ -1,15 +1,12 @@
 import sys
+from itertools import combinations
 
-inp = sys.stdin.readline
-n = int(inp())
-petals = [int(p) for p in inp().split()]
-avg_pics_n = n
+lines = sys.stdin.readlines()[1:]
+ranks = [[*map(int, rank.split())] for rank in lines]
+cst_pairs = set(combinations(ranks[0], 2))
 
-for i in range(n):
-    for j in range(i + 1, n):
-        pic = petals[i : j + 1]
-        avg = sum(pic) / (j - i)
-        if avg in pic:
-            avg_pics_n += 1
+for rank in ranks[1:]:
+    pairs = set(combinations(rank, 2))
+    cst_pairs &= pairs
 
-print(avg_pics_n)
+print(len(cst_pairs))
